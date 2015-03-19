@@ -1,7 +1,5 @@
 defmodule UKPostcode do
-  @moduledoc """
-  UK postcode parsing, validation and normalisation module.
-  """
+  @moduledoc false
 
   @re_outcode_only ~r/\A((?-mix:[A-Z]{1,2}[0-9R][0-9A-Z]?))\Z/
   @re_full         ~r/\A((?-mix:[A-Z]{1,2}[0-9R][0-9A-Z]?)) ?((?-mix:[0-9][ABD-HJLNP-UW-Z]{2}))\Z/
