@@ -1,5 +1,7 @@
 language: elixir
 sudo: false # Using faster container based build environment.
-script: mix test
+script:
+  - mix deps.get
+  - mix test
 notifications:
   email: false
