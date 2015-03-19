@@ -4,7 +4,7 @@ defmodule UKPostcode.Mixfile do
   def project do
     [app: :uk_postcode,
      description: description,
-     version: "0.0.1",
+     version: "0.1.0",
      elixir: "~> 1.0",
      deps: deps,
      package: package]
