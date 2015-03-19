@@ -23,7 +23,8 @@ defmodule UKPostcode.Mixfile do
   end
 
   defp deps do
-    [{:ex_spec, "~> 0.3.0", only: :test}]
+    [{:ex_spec, "~> 0.3.0", only: :test},
+     {:inch_ex, only: :docs}]
   end
 
   defp package do
