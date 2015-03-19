@@ -33,4 +33,9 @@ defmodule UKPostcodeTest do
   test "lowercase postcode should be valid" do
     assert UKPostcode.valid? "w1a 1aa"
   end
+
+  test "full? matches only full postcode" do
+    assert UKPostcode.full? "W1A 1AA"
+    refute UKPostcode.full? "W1A"
+  end
 end
