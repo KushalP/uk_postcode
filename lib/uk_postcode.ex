@@ -48,13 +48,13 @@ defmodule UKPostcode do
   ## Examples
 
       iex> UKPostcode.normalise "w1a1aa"
-      "W1A 1AA"
+      {:ok, "W1A 1AA"}
 
   """
   def normalise(postcode) do
     case {outcode(postcode), incode(postcode)} do
       {{:ok, outcode}, {:ok, incode}} ->
-        outcode <> " " <> incode
+        {:ok, outcode <> " " <> incode}
       _ ->
         {:error, postcode, "input was not a valid full postcode"}
     end

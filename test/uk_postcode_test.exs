@@ -82,8 +82,8 @@ defmodule UKPostcodeTest do
 
   describe "#normalise" do
     it "can normalise a badly formatted postcode" do
-      assert "W1A 1AA" == UKPostcode.normalise "W1A1AA"
-      assert "W1A 1AA" == UKPostcode.normalise "w1a 1aa"
+      assert {:ok, "W1A 1AA"} == UKPostcode.normalise "W1A1AA"
+      assert {:ok, "W1A 1AA"} == UKPostcode.normalise "w1a 1aa"
     end
 
     it "normalising using an invalid outcode or incode returns an error" do
