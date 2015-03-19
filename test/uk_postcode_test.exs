@@ -43,4 +43,15 @@ defmodule UKPostcodeTest do
     Enum.map(@valid_samples, &(refute UKPostcode.outcode? &1))
     Enum.map(@valid_outcodes, &(assert UKPostcode.outcode? &1))
   end
+
+  test "can extract the outcode" do
+    Enum.map(Enum.zip(@valid_outcodes, @valid_samples),
+             &(assert {:ok, elem(&1, 0)} == UKPostcode.outcode(elem(&1, 1))))
+    assert {:ok, "A9"} == UKPostcode.outcode("A9")
+  end
+
+  test "outcode returns the provided value and errors when a valid postcode isn't provided" do
+    assert :error == elem(UKPostcode.outcode("FOO"), 0)
+    assert "FOO"  == elem(UKPostcode.outcode("FOO"), 1)
+  end
 end

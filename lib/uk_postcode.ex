@@ -6,6 +6,19 @@ defmodule UKPostcode do
     postcode |> strip_and_upcase =~ @re_full
   end
 
+  def outcode(postcode) do
+    cond do
+      full?(postcode) ->
+        [_, outcode, _] = Regex.run(@re_full, postcode |> strip_and_upcase)
+        {:ok, outcode}
+      outcode?(postcode) ->
+        [_, outcode] = Regex.run(@re_outcode_only, postcode |> strip_and_upcase)
+        {:ok, outcode}
+      true ->
+        {:error, postcode, "input was not a valid postcode"}
+    end
+  end
+
   def outcode?(postcode) do
     postcode |> strip_and_upcase =~ @re_outcode_only
   end
