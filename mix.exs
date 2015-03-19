@@ -1,13 +1,20 @@
 defmodule UKPostcode.Mixfile do
   use Mix.Project
 
+  @version "0.1.0"
+  @github "https://github.com/KushalP/uk_postcode"
+
   def project do
     [app: :uk_postcode,
      description: description,
-     version: "0.1.0",
+     version: @version,
      elixir: "~> 1.0",
      deps: deps,
-     package: package]
+     package: package,
+     docs: [readme: true,
+            main: "README",
+            source_ref: "v#{@version}",
+            source_url: @github]]
   end
 
   def application do
@@ -30,6 +37,6 @@ defmodule UKPostcode.Mixfile do
   defp package do
     [contributors: ["Kushal Pisavadia"],
      licenses: ["MIT"],
-     links: %{"GitHub" => "https://github.com/KushalP/uk_postcode"}]
+     links: %{"GitHub" => @github}]
   end
 end
