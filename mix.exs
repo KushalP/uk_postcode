@@ -12,7 +12,6 @@ defmodule UKPostcode.Mixfile do
      deps: deps,
      package: package,
      docs: [readme: "README",
-            main: "README.md",
             source_ref: "v#{@version}",
             source_url: @github],
      source_url: @github,
