@@ -5,7 +5,9 @@
 [![Inline docs](http://inch-ci.org/github/KushalP/uk_postcode.svg?branch=master&style=flat)](http://inch-ci.org/github/KushalP/uk_postcode)
 
 UK postcode parsing and validation for
-[Elixir](http://elixir-lang.org/).
+[Elixir](http://elixir-lang.org/). Based on the excellent Ruby library
+of the [same name](https://github.com/threedaymonk/uk_postcode) by
+[@threedaymonk](https://github.com/threedaymonk).
 
 ## Usage
 
