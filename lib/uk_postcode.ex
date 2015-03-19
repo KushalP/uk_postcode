@@ -45,6 +45,7 @@ defmodule UKPostcode do
     outcode?(postcode) or full?(postcode)
   end
 
+  @doc false
   defp strip_and_upcase(postcode) do
     postcode |> String.strip |> String.upcase
   end
