@@ -6,8 +6,12 @@ defmodule UKPostcode do
     postcode |> strip_and_upcase =~ @re_full
   end
 
+  def outcode?(postcode) do
+    postcode |> strip_and_upcase =~ @re_outcode_only
+  end
+
   def valid?(postcode) do
-    (strip_and_upcase(postcode) =~ @re_outcode_only) or full?(postcode)
+    outcode?(postcode) or full?(postcode)
   end
 
   def strip_and_upcase(postcode) do

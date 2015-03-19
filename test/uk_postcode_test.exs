@@ -38,4 +38,9 @@ defmodule UKPostcodeTest do
     assert UKPostcode.full? "W1A 1AA"
     refute UKPostcode.full? "W1A"
   end
+
+  test "outcode? matches only outcodes of postcodes" do
+    refute UKPostcode.outcode? "W1A 1AA"
+    assert UKPostcode.outcode? "W1A"
+  end
 end
