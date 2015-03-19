@@ -26,7 +26,7 @@ defmodule UKPostcode.Mixfile do
     []
   end
 
-  def package do
+  defp package do
     [contributors: ["Kushal Pisavadia"],
      licenses: ["MIT"],
      links: %{"GitHub" => "https://github.com/KushalP/uk_postcode"}]
