@@ -34,13 +34,13 @@ defmodule UKPostcodeTest do
     assert UKPostcode.valid? "w1a 1aa"
   end
 
-  test "full? matches only full postcode" do
-    assert UKPostcode.full? "W1A 1AA"
-    refute UKPostcode.full? "W1A"
+  test "full? only matches full postcode" do
+    Enum.map(@valid_samples, &(assert UKPostcode.full? &1))
+    Enum.map(@valid_outcodes, &(refute UKPostcode.full? &1))
   end
 
   test "outcode? matches only outcodes of postcodes" do
-    refute UKPostcode.outcode? "W1A 1AA"
-    assert UKPostcode.outcode? "W1A"
+    Enum.map(@valid_samples, &(refute UKPostcode.outcode? &1))
+    Enum.map(@valid_outcodes, &(assert UKPostcode.outcode? &1))
   end
 end
