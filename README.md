@@ -21,3 +21,9 @@ Extract parts of a full postcode.
 UKPostcode.outcode "W1A 1AA" #=> "W1A"
 UKPostcode.incode "W1A 1AA"  #=> "1AA"
 ```
+
+Normalise badly formatted postcodes.
+
+```elixir
+UKPostcode.normalise "w1a1aa"  #=> "W1A 1AA"
+```

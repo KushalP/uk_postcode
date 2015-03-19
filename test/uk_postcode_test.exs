@@ -35,6 +35,10 @@ defmodule UKPostcodeTest do
     assert UKPostcode.valid? "w1a 1aa"
   end
 
+  test "should not be valid if truncated" do
+    refute UKPostcode.valid? "W1A 1A"
+  end
+
   test "full? only matches full postcode" do
     Enum.map(@valid_samples, &(assert UKPostcode.full? &1))
     Enum.map(@valid_outcodes, &(refute UKPostcode.full? &1))
@@ -64,5 +68,15 @@ defmodule UKPostcodeTest do
   test "incode returns the provided value and errors when a valid postcode isn't provided" do
     assert :error == elem(UKPostcode.incode("FOO"), 0)
     assert "FOO"  == elem(UKPostcode.incode("FOO"), 1)
+  end
+
+  test "can normalise a badly formatted postcode" do
+    assert "W1A 1AA" == UKPostcode.normalise "W1A1AA"
+    assert "W1A 1AA" == UKPostcode.normalise "w1a 1aa"
+  end
+
+  test "normalising using an invalid outcode or incode returns an error" do
+    assert :error == elem(UKPostcode.normalise("FOO"), 0)
+    assert "FOO"  == elem(UKPostcode.normalise("FOO"), 1)
   end
 end
