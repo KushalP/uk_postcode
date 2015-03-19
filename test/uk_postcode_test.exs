@@ -11,7 +11,8 @@ defmodule UKPostcodeTest do
   @valid_incodes @valid_samples |>
     Stream.map(&(String.split(&1, " "))) |>
     Stream.map(&(tl(&1))) |>
-    Enum.to_list
+    Enum.to_list |>
+    List.flatten
 
   test "empty strings aren't valid postcodes" do
     Enum.map(["", " ", "\r\n", "\n"], &(refute UKPostcode.valid? &1))
@@ -53,5 +54,15 @@ defmodule UKPostcodeTest do
   test "outcode returns the provided value and errors when a valid postcode isn't provided" do
     assert :error == elem(UKPostcode.outcode("FOO"), 0)
     assert "FOO"  == elem(UKPostcode.outcode("FOO"), 1)
+  end
+
+  test "can extract the incode" do
+    Enum.map(Enum.zip(@valid_incodes, @valid_samples),
+             &(assert {:ok, elem(&1, 0)} == UKPostcode.incode(elem(&1, 1))))
+  end
+
+  test "incode returns the provided value and errors when a valid postcode isn't provided" do
+    assert :error == elem(UKPostcode.incode("FOO"), 0)
+    assert "FOO"  == elem(UKPostcode.incode("FOO"), 1)
   end
 end
