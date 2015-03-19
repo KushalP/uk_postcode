@@ -9,6 +9,8 @@ defmodule UKPostcode do
   @doc ~S"""
   Returns true or false depending on if the value is a full valid postcode.
 
+  postcode - String postcode
+
   ## Examples
 
       iex> UKPostcode.full? "W1A 1AA"
@@ -20,6 +22,8 @@ defmodule UKPostcode do
 
   @doc ~S"""
   Extracts the right-hand part of the postcode.
+
+  postcode - String postcode
 
   ## Examples
 
@@ -39,6 +43,8 @@ defmodule UKPostcode do
   @doc ~S"""
   Returns the canonical string representation of the postcode.
 
+  postcode - String postcode
+
   ## Examples
 
       iex> UKPostcode.normalise "w1a1aa"
@@ -56,6 +62,8 @@ defmodule UKPostcode do
 
   @doc ~S"""
   Extracts the left-hand part of the postcode.
+
+  postcode - String postcode
 
   ## Examples
 
@@ -80,6 +88,8 @@ defmodule UKPostcode do
   Returns true or false depending on if the value is a valid left-hand
   value of a valid postcode.
 
+  postcode - String postcode
+
   ## Examples
 
       iex> UKPostcode.outcode? "W1A"
@@ -93,6 +103,8 @@ defmodule UKPostcode do
   @doc ~S"""
   Returns true or false depending on if the value is a valid postcode.
   This includes both full postcodes and outcode postcodes.
+
+  postcode - String postcode
 
   ## Examples
 
