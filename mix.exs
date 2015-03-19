@@ -3,28 +3,32 @@ defmodule UKPostcode.Mixfile do
 
   def project do
     [app: :uk_postcode,
+     description: description,
      version: "0.0.1",
      elixir: "~> 1.0",
-     deps: deps]
+     deps: deps,
+     package: package]
   end
 
-  # Configuration for the OTP application
-  #
-  # Type `mix help compile.app` for more information
   def application do
-    [applications: [:logger]]
+    []
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:mydep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
-  #
-  # Type `mix help deps` for more examples and options
+  defp description do
+    """
+    UK postcode parsing and validation library.
+
+    Validate full postcodes or parts of a postcode, and can extract parts of a full postcode.
+    """
+  end
+
   defp deps do
     []
+  end
+
+  def package do
+    [contributors: ["Kushal Pisavadia"],
+     licenses: ["MIT"],
+     links: %{"GitHub" => "https://github.com/KushalP/uk_postcode"}]
   end
 end
