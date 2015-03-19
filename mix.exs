@@ -11,10 +11,12 @@ defmodule UKPostcode.Mixfile do
      elixir: "~> 1.0",
      deps: deps,
      package: package,
-     docs: [readme: true,
-            main: "README",
+     docs: [readme: "README",
+            main: "README.md",
             source_ref: "v#{@version}",
-            source_url: @github]]
+            source_url: @github],
+     source_url: @github,
+     homepage_url: @github]
   end
 
   def application do
@@ -30,9 +32,13 @@ defmodule UKPostcode.Mixfile do
   end
 
   defp deps do
-    [{:ex_doc, "~> 0.7", only: :dev},
-     {:ex_spec, "~> 0.3.0", only: :test},
-     {:inch_ex, only: :docs}]
+    [# Documentation dependencies
+     {:earmark, only: :docs},
+     {:ex_doc, only: :docs},
+     {:inch_ex, "~> 0.2", only: :docs},
+
+     # Test depdendencies
+     {:ex_spec, "~> 0.3.0", only: :test}]
   end
 
   defp package do
