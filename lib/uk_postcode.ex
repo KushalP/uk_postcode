@@ -1,0 +1,2 @@
+defmodule UKPostcode do
+end
