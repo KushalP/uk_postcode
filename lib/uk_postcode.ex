@@ -54,7 +54,7 @@ defmodule UKPostcode do
   def normalise(postcode) do
     case {outcode(postcode), incode(postcode)} do
       {{:ok, outcode}, {:ok, incode}} ->
-        {:ok, outcode <> " " <> incode}
+        {:ok, "#{outcode} #{incode}"}
       _ ->
         {:error, postcode, "input was not a valid full postcode"}
     end
