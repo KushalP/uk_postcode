@@ -28,13 +28,13 @@ defmodule UKPostcode do
   ## Examples
 
       iex> UKPostcode.incode "W1A 1AA"
-      {:ok, "1AA"}
+      "1AA"
 
   """
   def incode(postcode) do
     if full?(postcode) do
       [_, _, incode] = Regex.run(@re_full, postcode |> strip_and_upcase)
-      {:ok, incode}
+      incode
     else
       raise UKPostcode.Error, reason: "input was not a valid full postcode", value: postcode
     end
@@ -48,16 +48,11 @@ defmodule UKPostcode do
   ## Examples
 
       iex> UKPostcode.normalise "w1a1aa"
-      {:ok, "W1A 1AA"}
+      "W1A 1AA"
 
   """
   def normalise(postcode) do
-    case {outcode(postcode), incode(postcode)} do
-      {{:ok, outcode}, {:ok, incode}} ->
-        {:ok, "#{outcode} #{incode}"}
-      _ ->
-        raise UKPostcode.Error, reason: "input was not a valid full postcode", value: postcode
-    end
+    "#{outcode(postcode)} #{incode(postcode)}"
   end
 
   @doc ~S"""
@@ -68,17 +63,17 @@ defmodule UKPostcode do
   ## Examples
 
       iex> UKPostcode.outcode "W1A 1AA"
-      {:ok, "W1A"}
+      "W1A"
 
   """
   def outcode(postcode) do
     cond do
       full?(postcode) ->
         [_, outcode, _] = Regex.run(@re_full, postcode |> strip_and_upcase)
-        {:ok, outcode}
+        outcode
       outcode?(postcode) ->
         [_, outcode] = Regex.run(@re_outcode_only, postcode |> strip_and_upcase)
-        {:ok, outcode}
+        outcode
       true ->
         raise UKPostcode.Error, reason: "input was not a valid full postcode", value: postcode
     end

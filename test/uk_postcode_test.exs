@@ -58,8 +58,8 @@ defmodule UKPostcodeTest do
   describe "#outcode" do
     it "can extract the outcode" do
       Enum.map(Enum.zip(@valid_outcodes, @valid_samples),
-               &(assert {:ok, elem(&1, 0)} == UKPostcode.outcode(elem(&1, 1))))
-      assert {:ok, "A9"} == UKPostcode.outcode("A9")
+               &(assert elem(&1, 0) == UKPostcode.outcode(elem(&1, 1))))
+      assert "A9" == UKPostcode.outcode("A9")
     end
 
     it "outcode returns the provided value and errors when a valid postcode isn't provided" do
@@ -72,7 +72,7 @@ defmodule UKPostcodeTest do
   describe "#incode" do
     it "can extract the incode" do
       Enum.map(Enum.zip(@valid_incodes, @valid_samples),
-               &(assert {:ok, elem(&1, 0)} == UKPostcode.incode(elem(&1, 1))))
+               &(assert elem(&1, 0) == UKPostcode.incode(elem(&1, 1))))
     end
 
     it "incode returns the provided value and errors when a valid postcode isn't provided" do
@@ -84,8 +84,8 @@ defmodule UKPostcodeTest do
 
   describe "#normalise" do
     it "can normalise a badly formatted postcode" do
-      assert {:ok, "W1A 1AA"} == UKPostcode.normalise "W1A1AA"
-      assert {:ok, "W1A 1AA"} == UKPostcode.normalise "w1a 1aa"
+      assert "W1A 1AA" == UKPostcode.normalise "W1A1AA"
+      assert "W1A 1AA" == UKPostcode.normalise "w1a 1aa"
     end
 
     it "normalising using an invalid outcode or incode raises an error" do
