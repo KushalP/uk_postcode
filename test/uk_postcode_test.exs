@@ -63,8 +63,9 @@ defmodule UKPostcodeTest do
     end
 
     it "outcode returns the provided value and errors when a valid postcode isn't provided" do
-      assert :error == elem(UKPostcode.outcode("FOO"), 0)
-      assert "FOO"  == elem(UKPostcode.outcode("FOO"), 1)
+      assert_raise UKPostcode.Error, "FOO: input was not a valid full postcode", fn ->
+        UKPostcode.outcode("FOO")
+      end
     end
   end
 
@@ -75,8 +76,9 @@ defmodule UKPostcodeTest do
     end
 
     it "incode returns the provided value and errors when a valid postcode isn't provided" do
-      assert :error == elem(UKPostcode.incode("FOO"), 0)
-      assert "FOO"  == elem(UKPostcode.incode("FOO"), 1)
+      assert_raise UKPostcode.Error, "FOO: input was not a valid full postcode", fn ->
+        UKPostcode.incode("FOO")
+      end
     end
   end
 
@@ -86,9 +88,10 @@ defmodule UKPostcodeTest do
       assert {:ok, "W1A 1AA"} == UKPostcode.normalise "w1a 1aa"
     end
 
-    it "normalising using an invalid outcode or incode returns an error" do
-      assert :error == elem(UKPostcode.normalise("FOO"), 0)
-      assert "FOO"  == elem(UKPostcode.normalise("FOO"), 1)
+    it "normalising using an invalid outcode or incode raises an error" do
+      assert_raise UKPostcode.Error, "FOO: input was not a valid full postcode", fn ->
+        UKPostcode.normalise("FOO")
+      end
     end
   end
 end

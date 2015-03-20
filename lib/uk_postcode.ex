@@ -36,7 +36,7 @@ defmodule UKPostcode do
       [_, _, incode] = Regex.run(@re_full, postcode |> strip_and_upcase)
       {:ok, incode}
     else
-      {:error, postcode, "input was not a valid full postcode"}
+      raise UKPostcode.Error, reason: "input was not a valid full postcode", value: postcode
     end
   end
 
@@ -56,7 +56,7 @@ defmodule UKPostcode do
       {{:ok, outcode}, {:ok, incode}} ->
         {:ok, "#{outcode} #{incode}"}
       _ ->
-        {:error, postcode, "input was not a valid full postcode"}
+        raise UKPostcode.Error, reason: "input was not a valid full postcode", value: postcode
     end
   end
 
@@ -80,7 +80,7 @@ defmodule UKPostcode do
         [_, outcode] = Regex.run(@re_outcode_only, postcode |> strip_and_upcase)
         {:ok, outcode}
       true ->
-        {:error, postcode, "input was not a valid full postcode"}
+        raise UKPostcode.Error, reason: "input was not a valid full postcode", value: postcode
     end
   end
 
