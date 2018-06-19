@@ -116,6 +116,6 @@ defmodule UKPostcode do
 
   @doc false
   defp strip_and_upcase(postcode) do
-    postcode |> String.strip |> String.upcase
+    postcode |> String.trim |> String.upcase
   end
 end
