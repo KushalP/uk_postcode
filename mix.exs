@@ -41,7 +41,7 @@ defmodule UKPostcode.Mixfile do
   end
 
   defp package do
-    [contributors: ["Kushal Pisavadia"],
+    [maintainers: ["Kushal Pisavadia"],
      licenses: ["MIT"],
      links: %{"GitHub" => @github}]
   end
