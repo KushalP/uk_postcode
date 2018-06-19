@@ -4,9 +4,9 @@ elixir:
 sudo: false # Using faster container based build environment.
 script:
   - mix test
-  - MIX_ENV=docs mix docs
+  - mix docs
 after_script:
-  - MIX_ENV=docs mix deps.get
-  - MIX_ENV=docs mix inch.report
+  - mix deps.get
+  - mix inch.report
 notifications:
   email: false
