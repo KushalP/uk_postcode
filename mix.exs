@@ -1,7 +1,7 @@
 defmodule UKPostcode.Mixfile do
   use Mix.Project
 
-  @version "0.3.0"
+  @version "1.0.0"
   @github "https://github.com/KushalP/uk_postcode"
 
   def project do
