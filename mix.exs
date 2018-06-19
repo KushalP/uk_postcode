@@ -32,9 +32,9 @@ defmodule UKPostcode.Mixfile do
 
   defp deps do
     [# Documentation dependencies
-     {:earmark, "~> 1.2", only: :docs},
-     {:ex_doc, "~> 0.18", only: :docs},
-     {:inch_ex, "~> 0.5", only: :docs},
+     {:earmark, "~> 1.2", only: :dev},
+     {:ex_doc, "~> 0.18", only: :dev},
+     {:inch_ex, "~> 0.5", only: :dev},
 
      # Test depdendencies
      {:ex_spec, "~> 2.0", only: :test}]
