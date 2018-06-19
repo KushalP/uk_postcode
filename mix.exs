@@ -8,7 +8,7 @@ defmodule UKPostcode.Mixfile do
     [app: :uk_postcode,
      description: description(),
      version: @version,
-     elixir: "~> 1.0",
+     elixir: "~> 1.6",
      deps: deps(),
      package: package(),
      docs: [readme: "README",
